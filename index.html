@@ -1,0 +1,40 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="keywords" content="Ajax jquery API hiking trails">
+	    <meta name="description" content="Capstone project for finding hiking trails"> 
+        <title>Trail finder</title>
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+            <nav role="navigation" class="nav-search">
+                <div class ="logo-search hidden"><a href="#js-top">UP</a></div>
+            </nav>
+
+        <div class="container" aria-live="assertive" id="js-top">
+
+            <h1 class="heading" role="header">Find your next Hiking Trail
+            <banner><img class="banner" src=""></banner></h1>
+    
+            <form id="js-form">
+                <label for="search-term">Provide your location or address</label>
+                <input type="text" name="search-term" id="js-search-term" placeholder="Los Angeles, CA, USA" required>
+                <input type="submit" value="Search" class="style-button">
+            </form>
+    
+            <p id="js-error-message"></p>
+            <section id="results" class="hidden">
+              <ul id="js-weather" class="weather-info"></ul>
+              <h2>Search results</h2>
+              <ul id="results-list"></ul>
+            </section>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="index.js"></script>
+    </body>
+    </html>
