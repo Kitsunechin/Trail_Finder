@@ -74,6 +74,7 @@ ul {
   
 li {
     padding: 10px;
+    list-style: none;
 }
   
 a {
@@ -186,11 +187,13 @@ img.logo-search:hover {
     border-radius: 100%;
 }
 
-img.result-img, .banner {
-    padding: 0.3em;
-    object-fit: cover;
-    width: 100%;
-}
+img.result-img {
+    padding: 3em;
+    object-fit: contain;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}  
 
 .trail-img:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

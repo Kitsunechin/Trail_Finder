@@ -40,9 +40,12 @@ function getWeather(responseJson) {
     console.log(err.message);
     //hide previous results and display 404 Not found
     $('#results').addClass('hidden')
-    $('#js-error-message').text(`Something went wrong: ${err.message}`);
+    $('#js-error-message').append(
+      `<li id='js-result_2'>
+      <div><img src="NotFound.png" class="result-img"></div>
+      </li>`
+    )
   });
-
 };
 
 function formatQueryParams(params) {
@@ -82,7 +85,11 @@ function getTrails(responseJson) {
       console.log(err.message);
       //hide previous results and display 404 Not found
       $('#results').addClass('hidden')
-      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+      $('#js-error-message').append(
+        `<li id='js-result_2'>
+      <div><img src="NotFound.png" class="result-img"></div>
+      </li>`
+      );
     });
 }
 
@@ -112,9 +119,13 @@ function getGeo(searchTerm) {
     })
     .catch(err => {
         console.log(err.message);
-        //hide previous results and display 404 Not found
+        //hide previous results and display Not found
         $('#results').addClass('hidden')
-        $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        $('#js-error-message').append(
+          `<li id='js-result_2'>
+      <div><img src="NotFound.png" class="result-img"></div>
+      </li>`
+        );
     });
 
 };
@@ -132,6 +143,7 @@ function displayWeather(responseJson_3) {
     const summary = responseJson_3.weather[0].description;
     const weatherIcon = "https://api.openweathermap.org/img/w/" + responseJson_3.weather[0].icon + ".png";
 
+    
     $('#js-weather').append(
         `<li class="box-info"><h3 id="js-city-name">${city}</h3>
         <p>Temperature<span> ${temp}</span></p>
@@ -139,7 +151,7 @@ function displayWeather(responseJson_3) {
         <p>Conditions<span> ${summary}</span></p>
         <p>Humidity<span> ${humidity}</span></p>
         </li>`
-    );   
+    ); 
 }
 
 function displayResults(responseJson_2) {
@@ -151,7 +163,7 @@ function displayResults(responseJson_2) {
     $('#results-list').empty();
   
     //throw 404 if result not found
-    if (trails.length <= 0) {
+    if (trails.length === 0) {
       $('#results-list').append(
         `<li id='js-result_2'>
         <div class="image-wrap"><img src="NotFound.png" class="result-img"></div>
