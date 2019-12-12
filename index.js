@@ -8,7 +8,7 @@ const apiKey = '200650145-102d40953dcd593ca8cd47bf5ba24ff1';
 const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 const appId = 'ae76d0efed32d9f29c4d54a5738b80ca';
 
-function getWeather(responseJson) {
+function getWeather(responseJson,) {
   const lat = responseJson.results[0].geometry.lat;
   const lng = responseJson.results[0].geometry.lng;
   const city = responseJson.results[0].components.city;
@@ -103,7 +103,7 @@ function getGeo(searchTerm) {
     fetch(url)
     .then(response => {
         if (response.ok) {
-        return response.json();
+          return response.json();
         }
         throw new Error(response.statusText);
     })
@@ -129,16 +129,17 @@ function displayWeather(responseJson_3) {
 
     const city = responseJson_3.name;
     const temp = Math.floor(responseJson_3.main.temp) + "°" + "F";
-    const humidity = 'Humidity level at ' + responseJson_3.main.humidity + '%';
+    const humidity = 'at ' + responseJson_3.main.humidity + '%';
     const summary = responseJson_3.weather[0].description;
     const weatherIcon = "https://api.openweathermap.org/img/w/" + responseJson_3.weather[0].icon + ".png";
 
     $('#js-weather').append(
-        `<li><h3 id="js-city-name">${city}</h3>
-        <p>temperature<span> ${temp}</span></p>
+        `<h2>Weather Information</h2>
+        <li><h3 id="js-city-name">${city}</h3>
+        <p>Temperature<span> ${temp}</span></p>
         <div class="weather-icon"><img src="${weatherIcon}" alt="weather icon"/></div>
-        <p>conditions<span> ${summary}</span></p>
-        <p><span> ${humidity}</span></p>
+        <p>Conditions<span> ${summary}</span></p>
+        <p>Humidity<span> ${humidity}</span></p>
         </li>`
     );   
 }
@@ -163,16 +164,17 @@ function displayResults(responseJson_2) {
       // add a list item to the results 
       //list parks info
       $('#results-list').append(
-        `<li><h3 id="js-name">${responseJson_2.trails[i].name}</h3>
-        <div class="trail-img"><img src="${responseJson_2.trails[i].imgSmallMed}" alt="trail photo"/></div>
+        `<h2>Trail Information</h2>
+        <li><h3 id="js-name">${responseJson_2.trails[i].name}</h3>
+        <div><a target="_blank" href="${responseJson_2.trails[i].imgMedium}"><img class="trail-img" src="${responseJson_2.trails[i].imgSmallMed}" alt="trail photo"/></a></div>
         <p>Exact Location:<span> ${responseJson_2.trails[i].location}</span></p>
-        <p>Difficulty:<span> ${responseJson_2.trails[i].difficulty}, learn more <a href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">Here</a></span></p>
+        <p>Difficulty:<span> ${responseJson_2.trails[i].difficulty}, learn more </span><a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here</a></p>
         <p>Description:<span> ${responseJson_2.trails[i].summary}</span></p>
         <p>Condition Status:<span> ${responseJson_2.trails[i].conditionDetails}</span></p>
         <p>Length:<span> ${responseJson_2.trails[i].length}</span></p>
         <p>Descent:<span> ${responseJson_2.trails[i].descent}</span></p>
         <p>Reviews:<span> ${responseJson_2.trails[i].stars}/5</span></p>
-        <p>Homepage:<span><a href="${responseJson_2.trails[i].url}"> Go here to visit our website</a></span></p>
+        <p>Homepage:<span> For more information </span><a target="_blank" href="${responseJson_2.trails[i].url}">visit our website</a></p>
         <hr>
         </li>`)
       }  

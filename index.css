@@ -72,10 +72,6 @@ a {
     color: #72AEEF;;
 }
 
-a:visited {
-    color: gray;
-  }
-
 hr {
     margin-top: 2em;
     border: 0;
@@ -88,9 +84,35 @@ hr {
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
+    background-color: #F6F8FA;
+    padding: 2em;
+}
+
+.input-field {
     background-color: #FFFFFF;
     padding: 2em;
     border-radius: 0.5em;
+}
+
+section.flexbox {
+    display:inline-block;
+}
+
+ul.results-list-container {
+    background-color: #FFFFFF;
+    padding: 2em;
+    border-radius: 0.5em;
+    width: 65%;
+    height: 200vh;
+    overflow: scroll;
+}
+
+div.weather-container {
+   float: right;
+    background-color: #FFFFFF;
+    padding: 2em;
+    border-radius: 0.5em;
+    width: 34%;
 }
 
 .heading, form {
@@ -99,16 +121,30 @@ hr {
 
 nav {
     position: fixed;
-    right: 2em;
-    top: 2em;
+    right: 5%;
+    top: 80%;
+}
+
+img.logo-search:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 100%;
 }
 
 img.result-img, .banner {
-  padding: 0.3em;
-  object-fit: cover;
-  width: 100%;
+    padding: 0.3em;
+    object-fit: cover;
+    width: 100%;
 }
-  
+
+.trail-img:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.trail-img {
+    border: 1em;
+    border-radius: 0.5em;;
+}
+
 .hidden {
     display: none;
 }
