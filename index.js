@@ -8,7 +8,7 @@ const apiKey = '200650145-102d40953dcd593ca8cd47bf5ba24ff1';
 const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 const appId = 'ae76d0efed32d9f29c4d54a5738b80ca';
 
-function getWeather(responseJson,) {
+function getWeather(responseJson) {
   const lat = responseJson.results[0].geometry.lat;
   const lng = responseJson.results[0].geometry.lng;
   const city = responseJson.results[0].components.city;
@@ -86,7 +86,6 @@ function getTrails(responseJson) {
     });
 }
 
-
 function getGeo(searchTerm) {
     const params = {
         key: geoKey,
@@ -134,10 +133,9 @@ function displayWeather(responseJson_3) {
     const weatherIcon = "https://api.openweathermap.org/img/w/" + responseJson_3.weather[0].icon + ".png";
 
     $('#js-weather').append(
-        `<h2>Weather Information</h2>
-        <li><h3 id="js-city-name">${city}</h3>
+        `<li class="box-info"><h3 id="js-city-name">${city}</h3>
         <p>Temperature<span> ${temp}</span></p>
-        <div class="weather-icon"><img src="${weatherIcon}" alt="weather icon"/></div>
+        <p class="weather-icon"><img src="${weatherIcon}" alt="weather icon"/></p>
         <p>Conditions<span> ${summary}</span></p>
         <p>Humidity<span> ${humidity}</span></p>
         </li>`
@@ -146,13 +144,14 @@ function displayWeather(responseJson_3) {
 
 function displayResults(responseJson_2) {
     console.log(responseJson_2);
+    const trails = responseJson_2.trails;
   
     // remove previous results
     $('#js-error-message').empty();
     $('#results-list').empty();
   
     //throw 404 if result not found
-    if (responseJson_2.trails.length <= 0) {
+    if (trails.length <= 0) {
       $('#results-list').append(
         `<li id='js-result_2'>
         <div class="image-wrap"><img src="NotFound.png" class="result-img"></div>
@@ -160,21 +159,20 @@ function displayResults(responseJson_2) {
       )
     } else {
       // iterate through the length of the repos array
-      for (let i = 0; i < responseJson_2.trails.length; i++){
-      // add a list item to the results 
+      for (let i = 0; i < trails.length; i++){
+        // add a list item to the results 
       //list parks info
       $('#results-list').append(
-        `<h2>Trail Information</h2>
-        <li><h3 id="js-name">${responseJson_2.trails[i].name}</h3>
-        <div><a target="_blank" href="${responseJson_2.trails[i].imgMedium}"><img class="trail-img" src="${responseJson_2.trails[i].imgSmallMed}" alt="trail photo"/></a></div>
-        <p>Exact Location:<span> ${responseJson_2.trails[i].location}</span></p>
-        <p>Difficulty:<span> ${responseJson_2.trails[i].difficulty}, learn more </span><a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here</a></p>
-        <p>Description:<span> ${responseJson_2.trails[i].summary}</span></p>
-        <p>Condition Status:<span> ${responseJson_2.trails[i].conditionDetails}</span></p>
-        <p>Length:<span> ${responseJson_2.trails[i].length}</span></p>
-        <p>Descent:<span> ${responseJson_2.trails[i].descent}</span></p>
-        <p>Reviews:<span> ${responseJson_2.trails[i].stars}/5</span></p>
-        <p>Homepage:<span> For more information </span><a target="_blank" href="${responseJson_2.trails[i].url}">visit our website</a></p>
+        `<li><h3 id="js-name">${trails[i].name}</h3>
+        <p><a target="_blank" href="${trails[i].imgMedium}"><img class="trail-img" src="${trails[i].imgSmallMed}" alt="trail photo"/></a></p>
+        <p>Exact Location:<span> ${trails[i].location}</span></p>
+        <p>Difficulty:<span> ${trails[i].difficulty}, learn more </span><a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here</a></p>
+        <p>Description:<span> ${trails[i].summary}</span></p>
+        <p>Condition Status:<span> ${(trails[i].conditionDetails !== null)? trails[i].conditionDetails : "not available"}</span></p>
+        <p>Length:<span> ${trails[i].length}</span></p>
+        <p>Descent:<span> ${trails[i].descent}</span></p>
+        <p>Reviews:<span> ${trails[i].stars}/5</span></p>
+        <p>Homepage:<span> For more information </span><a target="_blank" href="${trails[i].url}">visit our website</a></p>
         <hr>
         </li>`)
       }  
@@ -195,6 +193,7 @@ function watchForm() {
 
   $(window).on('scroll', function() {
     $('.logo-search').removeClass('hidden');
+    $('#js-footer').removeClass('hidden');
 });
 }
 

@@ -17,7 +17,16 @@ button, input[type="text"] {
 
 h1 {
   margin-bottom: 1.5em;
+  font-weight: 430;
 }  
+
+h2 {
+    font-weight: 430;
+}
+
+#results-list li h3 {
+    font-weight: 420;
+}
 
 label {
   display: block;
@@ -26,13 +35,13 @@ label {
 input {
     margin: 1em 0 1em 0;
     font-size: 1em;
+    font-weight: 100;
     border-radius: 0.2em;
     border-style: solid;
-    background-color: #F6F8FA;
+    background-color: #FFFFFF;
     border-color: #3D5A7B;
     vertical-align: middle;
 }
-
 
 label::after {
     content: '\A';
@@ -98,7 +107,7 @@ section.flexbox {
     display:inline-block;
 }
 
-ul.results-list-container {
+div.results-list-container {
     background-color: #FFFFFF;
     padding: 2em;
     border-radius: 0.5em;
@@ -108,15 +117,62 @@ ul.results-list-container {
 }
 
 div.weather-container {
-   float: right;
+    float: right;
     background-color: #FFFFFF;
     padding: 2em;
     border-radius: 0.5em;
     width: 34%;
 }
 
+.weather-info {
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(weather.png);
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    border-radius: 0.5em;  
+}
+
+.box-info {
+    background-color: rgba(255, 255, 255, 0.397);
+}
+
+p {
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+}
+
+.center {
+    text-align: center;
+}
+
 .heading, form {
     text-align: center;
+}
+
+form.search-field {
+    background-image: url('banner_2.png');
+    background-color: #ffffff; 
+    height: 58vh; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    border-radius: 0.5em;
+}
+
+div.box-wrap {
+    background-color: rgba(255, 255, 255, 0.548);
+    position: absolute;
+    padding:2em;
+    border-radius: 0.5em;
+    top:45%;
+    left:37%;
+}
+
+label.search-term {
+    font-weight: 400;
+    font-size: 1.1em;
 }
 
 nav {
@@ -141,10 +197,21 @@ img.result-img, .banner {
 }
 
 .trail-img {
-    border: 1em;
-    border-radius: 0.5em;;
+    border-radius: 0.5em;
+    margin-bottom: 2em;
 }
 
 .hidden {
     display: none;
 }
+
+footer {
+    position: absolute;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 2em;  
+    text-align: center; 
+    padding: 0.5em; 
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;        /* Footer height */
+  }
