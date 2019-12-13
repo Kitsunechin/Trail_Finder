@@ -146,9 +146,9 @@ function displayWeather(responseJson_3) {
     
     $('#js-weather').append(
         `<li class="box-info"><h3 id="js-city-name">${city}</h3>
-        <p>Temperature<span> ${temp}</span></p>
+        <p>Temperature at<span> ${temp}</span></p>
         <p class="weather-icon"><img src="${weatherIcon}" alt="weather icon"/></p>
-        <p>Conditions<span> ${summary}</span></p>
+        <p>Conditions: <span> ${summary}</span></p>
         <p>Humidity<span> ${humidity}</span></p>
         </li>`
     ); 
@@ -176,14 +176,14 @@ function displayResults(responseJson_2) {
       //list parks info
       $('#results-list').append(
         `<li><h3 id="js-name">${trails[i].name}</h3>
-        <p><a target="_blank" href="${trails[i].imgMedium}"><img class="trail-img" src="${trails[i].imgSmallMed}" alt="trail photo"/></a></p>
-        <p>Exact Location:<span> ${trails[i].location}</span></p>
-        <p>Difficulty:<span> ${trails[i].difficulty}, learn more </span><a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here</a></p>
-        <p>Description:<span> ${trails[i].summary}</span></p>
-        <p>Condition Status:<span> ${(trails[i].conditionDetails !== null)? trails[i].conditionDetails : "not available"}</span></p>
-        <p>Length:<span> ${trails[i].length}</span></p>
-        <p>Descent:<span> ${trails[i].descent}</span></p>
-        <p>Reviews:<span> ${trails[i].stars}/5</span></p>
+        <p><div class= "scale-img"><a target="_blank" href="${trails[i].imgMedium}"><img class="trail-img" src="${trails[i].imgSmallMed}" alt="trail photo"/></a></div></p>
+        <p>Exact Location:<span>${trails[i].location}</span></p>
+        <p>Difficulty:<span>${trails[i].difficulty}, learn more </span><a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here</a></p>
+        <p>Description:<span>${trails[i].summary}</span></p>
+        <p>Condition Status:<span>${(trails[i].conditionDetails !== null)? trails[i].conditionDetails : "not available"}</span></p>
+        <p>Length:<span>${trails[i].length} miles</span></p>
+        <p>Descent:<span>${trails[i].descent} ft.</span></p>
+        <p>Reviews:<span>${trails[i].stars}/5</span></p>
         <p>Homepage:<span> For more information </span><a target="_blank" href="${trails[i].url}">visit our website</a></p>
         <hr>
         </li>`)
@@ -204,8 +204,13 @@ function watchForm() {
   });
 
   $(window).on('scroll', function() {
+    if ($(window).scrollTop() > $('body').height() / 2) {
     $('.logo-search').removeClass('hidden');
     $('#js-footer').removeClass('hidden');
+    }
+    else if ($('#js-top').focus()){
+    $('.logo-search').addClass('hidden');
+    }
 });
 }
 
