@@ -13,27 +13,28 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-            <nav role="navigation" class="nav-search">
-                <div class = "hidden logo-search"><a href= "#js-top"><img class= "logo-search" src="SearchIcon.png" width="50px"/></a></div>
-            </nav>
+        <nav role="navigation" class="nav-search">
+            <div class = "hidden logo-search">
+                <a href= "#js-top"><img class= "logo-search" src="SearchIcon.png" alt="icon" width="50px"/></a>
+            </div>
+        </nav>
 
-        <div class="container" aria-live="assertive" id="js-top">
-            <section class="input-field">
-            <h1 class="heading" role="header">Find your next Hiking Trail
-            <banner><img class="banner"/></banner></h1>
-    
-            <form id="js-form" class="search-field">
-                <div class="box-wrap">
-                <label class= "search-term" for="search-term">Provide your location or address</label>
-                <input type="text" name="search-term" id="js-search-term" placeholder="Los Angeles, CA, USA" required>
-                <input type="submit" value="Search" class="style-button">
-                </div>
-            </form>
+        <div class="container" id="js-top">
+
+            <section class="input-field" aria-live="assertive">
+                <h1 class="heading" role="header">Find your next Hiking Trail<banner><img class="banner"/></banner></h1>
+                <form id="js-form" class="search-field">
+                    <div class="box-wrap">
+                        <label class= "search-term" for="search-term">Provide your location or address</label>
+                        <input type="text" name="search-term" id="js-search-term" placeholder="Los Angeles, CA, USA" required>
+                        <input type="submit" role="button" value="Search" class="style-button">
+                    </div>
+                </form>
             </section>
     
-            <p id="js-error-message"></p>
+            <p id="js-error-message" aria-hidden="true"></p>
             
-            <section id="results" class="hidden">
+            <section id="results" class="hidden" role="main" aria-live="assertive">
                 <div class="flexbox">
                     <div class="weather-container center">
                         <h2>Weather Information</h2>
@@ -42,7 +43,7 @@
                     <div class="results-list-container">
                         <h2>Trail Information</h2>
                         <ul id="results-list" class="style-list"></ul>
-                 </div>
+                    </div>
                 </div>
             </section>
 
