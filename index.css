@@ -12,12 +12,11 @@ html {
 }
   
 button, input[type="text"] {
-    padding: 0.4em;
+    padding: 0.5em;
 }
 
 h1 {
-    margin-bottom: 1.5em;
-    font-size: 2em;
+    font-size: 1.5em;
     text-transform: uppercase;
 }  
 
@@ -25,12 +24,19 @@ h2 {
     font-weight: 430;
 }
 
-#results-list li h3 {
-    font-weight: 600;
+#results-list h3 {
+    font-weight: 900;
 }
 
+.style-label {
+    font-weight: bolder;
+    text-transform: uppercase;
+    line-height: 2;
+}
+
+
 label {
-  display: block;
+    display: block;
 }
 
 input {
@@ -46,7 +52,7 @@ input {
 
 label::after {
     content: '\A';
-    white-space: pre;
+    white-space: pre-wrap;
 }
   
 .style-button:hover {
@@ -56,13 +62,14 @@ label::after {
   
 .style-button {
     background-color: #253B59;
-    border: none;
     color: #ffffff;
-    padding: 0.5em;
+    border: none;
     cursor: pointer;
+    padding: 0.5em;
 }
   
 span {
+  font-weight: lighter;
   letter-spacing: 0.3px;
   line-height: 1.5em;
   text-transform: none;
@@ -119,7 +126,7 @@ div.results-list-container {
     padding: 2em;
     border-radius: 0.5em;
     width: 65%;
-    height: 160vh;
+    height: 200vh;
     overflow: scroll;
 }
 
@@ -161,14 +168,13 @@ p {
 form.search-field {
     background-image: url('banner.png');
     background-color: #ffffff; 
-    height: 58vh; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover; 
     border-radius: 0.5em;
 }
 
-@keyframes bounceIn {
+/* @keyframes bounceIn {
     1% {
       transform: scale(0.1);
       opacity: 0;
@@ -185,19 +191,26 @@ form.search-field {
   
   .box-wrap {
     animation: bounceIn 3s;
-  }
+  } */
+
+form {
+    display: flex;
+    text-align: center;
+}
 
 div.box-wrap {
     background-color: rgba(255, 255, 255, 0.8);
-    position: absolute;
-    padding:2em;
+    padding: 1.5em 2em 1em 2em;
     border-radius: 0.5em;
-    top:45%;
-    left:37%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 label.search-term {
     font-weight: 400;
+    margin-top: 0;
     font-size: 1.2em;
 }
 
@@ -246,71 +259,101 @@ footer {
     border-top-right-radius: 0.5em;
   }
 
-  @media only screen and (max-width: 767px) {
-    div#js-top.container {
-        padding: 0;
-        max-width: 100%;
-        background-color: #F6F8FA;
-    }
+  @media only screen and (max-width: 670px) {
 
+    form {
+        display: flex;
+        text-align: center;
+    }
+    
     div.box-wrap {
         background-color: rgba(255, 255, 255, 0.8);
-        position: absolute;
-        padding-right: 1em;
-        padding-left: 1em;
-        padding-bottom: 0.5em;
-        padding-top: 0.8em;
         border-radius: 0.5em;
-        top: 40%;
-        left: 25%;
-        width: 50%;
+        padding: 1em;
+        margin-left: auto;   
     }
 
     h1 {
-        font-size: 1.5em;
+        font-size: 1em;
+    }
+
+    h2 {
+        font-size: 0.9em;
+        font-weight: bolder;
+        margin-bottom: 0.6em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    li.box-info {
+        display: block;
+        font-size: 0.7em;
+        font-weight: bold;
+        margin-top: 0;
+        height: 25vh;
+    }
+
+    p.weather-icon img {
+        width: 30px;
+        margin: 0;
+        padding: 0;
     }
 
     input {
-        font-size: 0.8em;  
+        font-size: 0.6em;  
         margin-bottom: 0;
         margin-right: auto;
         margin-left: auto;
     }
 
     label.search-term {
-        font-size: 1em;
-    }
-
-    .style-button {
-        margin-bottom: 0.7em;
+        font-size: 0.7em;
     }
     
     div.results-list-container {
-        background-color: #FFFFFF;
         padding: 2em;
         margin-bottom: 0.5em;
         border-radius: 0.5em;
         width: 100%;
-        height: 160vh;
-        overflow: scroll;
+        height: 100%;
         display: block;
-        width: 100%;
     }
     
+    .result {
+        font-size: 0.8em;
+        padding: 1.5em 0;
+    }
+
     div.weather-container {
-        display: block;
-        background-color: #FFFFFF;
-        padding: 2em;
+        padding: 1em;
         border-radius: 0.5em;
         width: 100%;
         margin: 3px 0px; 
         border-bottom: 1em;
     }
 
-
     img.trail-img {
-        width: 100%;
+        width: 50%;
         height: auto;
+        margin-bottom: 1em;
+    }
+
+    .style-list {
+        font-size: 0.6em;
+    }
+
+    .external-link {
+        width: 6px;
+    }
+
+    .icon {
+        width: 35px;
+    }
+
+    footer {
+        font-size: 0.8em;
     }
 
   }
@@ -322,17 +365,13 @@ footer {
         background-color: #F6F8FA;
     }
 
+    .result {
+        font-size: 1em;
+        padding: 1.5em 0;
+    }
+
     div.box-wrap {
         background-color: rgba(255, 255, 255, 0.8);
-        position: absolute;
-        padding-left: 0;
-        padding-right: 0;
-        padding-bottom: 1em;
-        padding-top: 2em;
-        border-radius: 0.5em;
-        top: 40%;
-        left: 30%;
-        width: 35%;
     }
 
     div.results-list-container {

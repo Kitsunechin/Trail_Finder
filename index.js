@@ -167,6 +167,7 @@ function displayResults(responseJson_2) {
     // remove previous results
     $('#js-error-message').empty();
     $('#results-list').empty();
+    $('.js-number').text(`We've found ${trails.length} results for this search`);
   
     //throw Not Found if result not found
     if (trails.length === 0) {
@@ -182,15 +183,15 @@ function displayResults(responseJson_2) {
       //list parks info
       $('#results-list').append(
         `<li><h3 id="js-name">${trails[i].name}</h3>
-        <p><div class= "scale-img"><a target="_blank" href="${trails[i].imgMedium}"><img class="trail-img" src="${trails[i].imgSmallMed}" alt="trail photo"/></a></div></p>
-        <p>Exact Location:<span>${trails[i].location}</span></p>
-        <p>Difficulty:<span>${trails[i].difficulty}, learn more </span><a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here</a></p>
-        <p>Description:<span>${trails[i].summary}</span></p>
-        <p>Condition Status:<span>${(trails[i].conditionDetails !== null)? trails[i].conditionDetails : "not available"}</span></p>
-        <p>Length:<span>${trails[i].length} miles</span></p>
-        <p>Descent:<span>${trails[i].descent} ft.</span></p>
-        <p>Reviews:<span>${trails[i].stars}/5</span></p>
-        <p>Homepage:<span> For more information </span><a target="_blank" href="${trails[i].url}">visit our website</a></p>
+        <p class="style-label"><div class= "scale-img"><a target="_blank" href="${trails[i].imgMedium}"><img class="trail-img" src="${trails[i].imgSmallMed}" alt="trail photo"/></a></div></p>
+        <p class="style-label">Exact Location:<span>${trails[i].location}</span></p>
+        <p class="style-label">Difficulty:<span>${trails[i].difficulty}, learn more <a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here <img class= "external-link" src="external.png" alt="icon" width="12px"/></a></span></p>
+        <p class="style-label">Description:<span>${trails[i].summary}</span></p>
+        <p class="style-label">Condition Status:<span>${(trails[i].conditionDetails !== null)? trails[i].conditionDetails : "not available"}</span></p>
+        <p class="style-label">Length:<span>${trails[i].length} miles</span></p>
+        <p class="style-label">Descent:<span>${trails[i].descent} ft.</span></p>
+        <p class="style-label">Reviews:<span>${trails[i].stars}/5</span></p>
+        <p class="style-label">Homepage:<span> For more information <a target="_blank" href="${trails[i].url}">visit this website <img class= "external-link" src="external.png" alt="icon" width="12px"/></a></span></p>
         <hr>
         </li>`)
       }  
@@ -204,12 +205,13 @@ function displayResults(responseJson_2) {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    const searchTerm = $('#js-search-term').val();
+    
+    const searchTerm = $('#search-term').val();
     getGeo(searchTerm);   
   });
 
   $(window).on('scroll', function() {
-    if ($(window).scrollTop() > $('body').height() / 2) {
+    if ($('#results').focus()) {
     $('.logo-search').removeClass('hidden');
     $('#js-footer').removeClass('hidden');
   }
@@ -217,6 +219,11 @@ function watchForm() {
     $('.logo-search').addClass('hidden');
   }
   });
+
+  $("input[placeholder]").each(function () {
+    $(this).attr('size', $(this).attr('placeholder').length);
+  });
+
 };
 
 $(watchForm);
