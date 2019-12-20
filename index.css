@@ -174,7 +174,7 @@ form.search-field {
     border-radius: 0.5em;
 }
 
-/* @keyframes bounceIn {
+@keyframes bounceIn {
     1% {
       transform: scale(0.1);
       opacity: 0;
@@ -191,7 +191,7 @@ form.search-field {
   
   .box-wrap {
     animation: bounceIn 3s;
-  } */
+  }
 
 form {
     display: flex;
