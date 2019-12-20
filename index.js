@@ -46,7 +46,7 @@ function getGeo(searchTerm) {
         $('#results').addClass('hidden')
         $('#js-error-message').append(
           `<li id="js-result_2">
-          <div><img src="NotFound.png" class="result-img"></div>
+          <div><img src="Assets/NotFound.png" class="result-img"></div>
           </li>`
         );
     });
@@ -88,7 +88,7 @@ function getWeather(responseJson) {
     $('#results').addClass('hidden')
     $('#js-error-message').append(
       `<li id="js-result_2">
-      <div><img src="NotFound.png" class="result-img"></div>
+      <div><img src="Assets/NotFound.png" class="result-img"></div>
       </li>`
     )
   });
@@ -128,7 +128,7 @@ function getTrails(responseJson) {
       $('#results').addClass('hidden')
       $('#js-error-message').append(
         `<li id="js-result_2">
-      <div><img src="NotFound.png" class="result-img"></div>
+      <div><img src="Assets/NotFound.png" class="result-img"></div>
       </li>`
       );
     });
@@ -173,7 +173,7 @@ function displayResults(responseJson_2) {
     if (trails.length === 0) {
       $('#results-list').append(
         `<li id="js-result_2">
-        <div class="image-wrap"><img src="NotFound.png" class="result-img"></div>
+        <div class="image-wrap"><img src="Assets/NotFound.png" class="result-img"></div>
         </li>`
       )
     } else {
@@ -185,13 +185,13 @@ function displayResults(responseJson_2) {
         `<li><h3 id="js-name">${trails[i].name}</h3>
         <p class="style-label"><div class= "scale-img"><a target="_blank" href="${trails[i].imgMedium}"><img class="trail-img" src="${trails[i].imgSmallMed}" alt="trail photo"/></a></div></p>
         <p class="style-label">Exact Location:<span>${trails[i].location}</span></p>
-        <p class="style-label">Difficulty:<span>${trails[i].difficulty}, learn more <a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here <img class= "external-link" src="external.png" alt="icon" width="12px"/></a></span></p>
+        <p class="style-label">Difficulty:<span>${trails[i].difficulty}, learn more <a target="_blank" href="https://signsofthemountains.com/blogs/news/what-do-the-symbols-on-ski-trail-signs-mean">here <img class= "external-link" src="Assets/external.png" alt="icon" width="12px"/></a></span></p>
         <p class="style-label">Description:<span>${trails[i].summary}</span></p>
         <p class="style-label">Condition Status:<span>${(trails[i].conditionDetails !== null)? trails[i].conditionDetails : "not available"}</span></p>
         <p class="style-label">Length:<span>${trails[i].length} miles</span></p>
         <p class="style-label">Descent:<span>${trails[i].descent} ft.</span></p>
         <p class="style-label">Reviews:<span>${trails[i].stars}/5</span></p>
-        <p class="style-label">Homepage:<span> For more information <a target="_blank" href="${trails[i].url}">visit this website <img class= "external-link" src="external.png" alt="icon" width="12px"/></a></span></p>
+        <p class="style-label">Homepage:<span> For more information <a target="_blank" href="${trails[i].url}">visit this website <img class= "external-link" src="Assets/external.png" alt="icon" width="12px"/></a></span></p>
         <hr>
         </li>`)
       }  

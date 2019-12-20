@@ -140,7 +140,7 @@ div.weather-container {
 .weather-info {
     margin-left: auto;
     margin-right: auto;
-    background-image: url(weather.png);
+    background-image: url(Assets/weather.png);
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
@@ -165,7 +165,7 @@ p {
 }
 
 form.search-field {
-    background-image: url('banner.png');
+    background-image: url('Assets/banner.png');
     background-color: #ffffff; 
     background-position: center; 
     background-repeat: no-repeat; 
