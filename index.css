@@ -53,6 +53,17 @@ label::after {
     content: '\A';
     white-space: pre-wrap;
 }
+
+a[href='#0']{
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+img[src='Assets/noImg.png']:hover {
+    box-shadow: none;
+}
   
 .style-button:hover {
     background-color: #77B5F3;

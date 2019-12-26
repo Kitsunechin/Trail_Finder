@@ -141,6 +141,15 @@ function displayWeather(responseJson_3) {
     // remove previous results
     $('#js-error-message').empty();
     $('#js-weather').empty();
+    $(window).on('scroll', function() {
+      if ($('#results').focus()) {
+      $('.logo-search').removeClass('hidden');
+      $('#js-footer').removeClass('hidden');
+    }
+      else if ($('#js-top').focus()){
+      $('.logo-search').addClass('hidden');
+    }
+    });
 
     const city = `${responseJson_3.name}`;
     const temp = `${Math.floor(responseJson_3.main.temp)}° F`;
@@ -180,6 +189,8 @@ function displayResults(responseJson_2) {
       // iterate through the length of the repos array
       for (let i = 0; i < trails.length; i++){
       // add a list of items to the results 
+      // handle broken empty img
+    
       //list parks info
       $('#results-list').append(
         `<li><h3 id="js-name">${trails[i].name}</h3>
@@ -197,33 +208,38 @@ function displayResults(responseJson_2) {
       }  
     };
   
+    //disable link and img if the attributes in API are empty 
+    $('img').each(function () {
+      if($(this).attr('src')=="") {
+         $(this).attr('src', 'Assets/noImg.png').css({'width' : '250px' , 'height' : 'auto'});
+      }
+    });
+
+    $('a').each(function () {
+      if($(this).attr('href')=="") {
+         $(this).attr('href', '#0').click(function(event) {
+          event.preventDefault();})
+      }
+    });
+    
     //display the results section  
     $('#results').removeClass('hidden');
 };
+
+function adjustPlace() {
+  $("input[placeholder]").each(function () {
+    $(this).attr('size', $(this).attr('placeholder').length);
+  });
+}
 
 //watch the form for user action
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    
+    adjustPlace();
     const searchTerm = $('#search-term').val();
     getGeo(searchTerm);   
   });
-
-  $(window).on('scroll', function() {
-    if ($('#results').focus()) {
-    $('.logo-search').removeClass('hidden');
-    $('#js-footer').removeClass('hidden');
-  }
-    else if ($('#js-top').focus()){
-    $('.logo-search').addClass('hidden');
-  }
-  });
-
-  $("input[placeholder]").each(function () {
-    $(this).attr('size', $(this).attr('placeholder').length);
-  });
-
 };
 
 $(watchForm);
